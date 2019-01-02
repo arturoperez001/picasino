@@ -1,0 +1,167 @@
+<% include ./../partials/head.ejs %>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <% include ./../partials/sideMenu.ejs %>
+            <% include ./../partials/topNavigation.ejs %>
+                
+            <div class="right_col" role="main">
+                  <div class="row top_tiles" style="margin: 10px 0;">
+                  </div>
+                      <div class="row top_tiles" style="margin: 10px 0;">
+                        <div class="col-md-3 col-sm-3 col-xs-6 tile">
+                            <span>Empresas Creadas</span>
+                                <h2>
+                                    ###
+                                </h2>
+                                <a class="text-small btn-link" href="#">Ver todas
+                            </a>                    
+                        </div>
+                      </div>
+                      <!-- contenido -->
+                                          <div class="x_panel">
+                                  
+                                            <div class="x_title">
+                                            <h2>
+                                                <i class="fas fa-industry"></i>
+                                                Empresas
+                                            </h2>
+                                            <div class="clearfix"></div>
+                                            </div>
+                                          <div class="x_content">
+                                          <br>
+                                          
+                                              <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                                                      <!-- 
+                                                          <h1>Usted no tiene ninguna empresa registrada.</h1>
+                                                      -->
+                                                  <div class="panel"><!-- panel --> 
+                                                      <a class="panel-heading" role="tab" id="heading" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="true" aria-controls="collapse">
+                                                          <h4 class="panel-title">
+                                                            NOMBRE DE LA EMPRESA
+                                                          </h4>
+                                                      </a>
+                                                      <div id="collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading">
+                                                      
+                                                          <div class="panel-body">
+                                                              <form  method="POST" action="" class="form-horizontal form-label-left">
+                                                                <input name="idEmpresa" type="hidden"   class="form-control col-md-7 col-xs-12" value="">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >Nombre de la empresa <span class="required">*</span>
+                                                                    </label>
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                    <input name="nombre" type="text"  required="required" class="form-control col-md-7 col-xs-12" placeholder="Nombre de la empresa" >
+                                                                    
+                                                                    </div>
+                                                                </div>
+                                                              <div class="form-group">
+                                                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                                      RUT de la empresa
+                                                                      <span class="required">*</span>
+                                                                  </label>
+                                                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                  <input type="text" class="form-control col-md-7 col-xs-12" placeholder="RUT de la empresa SIN PUNTOS O GUION" DISABLED >
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                                          Correo de la empresa
+                                                                  </label>
+                                                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                  <input id="" class="form-control col-md-7 col-xs-12" type="mail" placeholder="Correo de la empresa" DISABLED >
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                                          Telefono de la empresa
+                                                                  </label>
+                                                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                  <input name="telefono" id="" class="form-control col-md-7 col-xs-12" type="number" placeholder="Telefono de la empresa | sin puntos o guion" >
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                                          Telefono secundario de la empresa
+                                                                  </label>
+                                                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                  <input name="telefono2" id="" class="form-control col-md-7 col-xs-12" type="number" placeholder="Telefono secundario de la empresa | sin puntos o guion" >
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                                          Direcci&oacute;n
+                                                                  </label>
+                                                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                  <input name="direccion" id="" class="form-control col-md-7 col-xs-12" type="text" placeholder="Direccion de la empresa | sin puntos o guion" >
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                                          Tipo de empresa
+                                                                  </label>
+                                                                  <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                  <select name="tipoEmpresa" id="" class="form-control col-md-7 col-xs-12">
+                                                                  
+                                                                          <option value="">
+                                                                  
+                                                                          </option>
+                                                                  </select>
+                                                                  </div>
+                                                              </div>
+                                                                      <div class="form-group">
+                                                                      <label for="" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                                              Relacionar con empresa:
+                                                                      </label>
+                                                                      <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                          <select name="relEmpresa" id="" class="form-control col-md-7 col-xs-12">
+                                                                                  <option >
+                                                                                      Relacionar con empresa:
+                                                                                  </option>
+                                                                                  <option value="">
+                                                                                      NOMBRE | RUT: ###
+                                                                                  </option>
+                                                                          </select>
+                                                                      </div>
+                                                                      </div>
+                                                              <div class="ln_solid"></div>
+                                                              <div class="form-group">
+                                                                  <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 text-center">
+                                                                      <button class="btn btn-primary"  name="opc" value="Modificar">
+                                                                          <i class="fas fa-pencil-alt"></i>
+                                                                          Modificar Empresa
+                                                                      </button>
+                                                                      <button class="btn btn-danger"  name="opc" value="Eliminar">
+                                                                          <i class="fas fa-trash-alt"></i>
+                                                                          Eliminar Empresa
+                                                                      </button>
+                                                                  </div>
+                                                              </div>
+              
+                                                              </form>
+                                                          </div>
+                                                      </div>
+                                                  </div><!-- /end panel --> 
+                                                  <?php  
+                                                      $i++;
+                                                      endforeach;
+                                                  }
+                                                  ?>
+                                              </div><!-- /endAccordion--> 
+                                              
+              
+                                          </div>
+                                      </div>
+                          <?php
+                              break;
+                          }
+                      ?>
+                      
+                      <!-- /contenido --> 
+                  </div>
+
+
+
+        </div>
+        <% include ./../partials/footer.ejs %>
+    </div>
+</body>

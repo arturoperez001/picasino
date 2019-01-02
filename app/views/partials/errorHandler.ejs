@@ -1,0 +1,17 @@
+
+
+if (isset($warning['result']) && $warning['result'] != ""){
+    echo '<div class="alert alert-'.$warning['result'].' text-center" role="alert">
+        '.$warning['notice'].'
+    </div>';
+}
+if (isset($_SESSION['flash']['mensaje'][0]) || isset($_SESSION['flash']['mensaje'][1]) ){
+    
+    echo '<div class="alert alert-danger text-center" role="alert">';
+        foreach($_SESSION['flash']['mensaje'] as $e){
+            echo $e .'<br/>';
+            $i++;
+        }	
+    echo '</div>';
+    unset($_SESSION['flash']);
+}
