@@ -5,10 +5,10 @@
 
 'use strict';
 
-import User from __dirname+'/api/user/user.model';
-import config from './environment/';
+const User = require('../api/user/user.model');
+const config = require('./');
 
-export default function seedDatabaseIfNeeded() {
+module.exports = function seedDatabaseIfNeeded() {
     if(config.seedDB) {
       User.find({}).remove()
         .then(() => {

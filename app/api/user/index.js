@@ -11,8 +11,7 @@ const controller = require('./user.controller');
 // router.get('/', auth.isAuthenticated(), controller.index);
 
 
-// @TODO: eliminar este el metodo de acceso de testing
-router.get('/', controller.create);
+router.get('/', controller.me);
 
 // @TODO: crear usuarios por medio de post
 // require: email, nombre, last, password

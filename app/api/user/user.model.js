@@ -1,9 +1,9 @@
 
 /*eslint no-invalid-this:0*/
-const crypto = require('bcrypt');
+const crypto = require('crypto');
 const mongoose = require('mongoose');
 const registerEvents = './user.events';
-
+const Schema = mongoose.Schema;
 mongoose.Promise = require('bluebird');
 
 var UserSchema = new Schema({
@@ -223,5 +223,5 @@ UserSchema.methods = {
   }
 };
 
-registerEvents(UserSchema);
-export default mongoose.model('User', UserSchema);
+//registerEvents(UserSchema);
+module.exports = mongoose.model('User', UserSchema);
