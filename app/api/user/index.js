@@ -19,6 +19,8 @@ router.get('/', controller.me);
 
 router.post('/', controller.create);
 
+router.get('/new', controller.create);
+
 // router.get('/', auth.hasRole('admin'), controller.index);
 /*
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);

@@ -1,6 +1,7 @@
 
 const User = require('./user.model');
 const controller = {};
+const jwt = require('jsonwebtoken');
 
 
 function validationError(res, statusCode) {
@@ -87,7 +88,7 @@ controller.changePassword = function (req, res) {
 controller.me = function (req, res, next) {
   var userId = req.user._id;
 
-  return User.findOne({ _id: userId }, '-salt -password').exec()
+  return User.findOne({_id: userId}, '-salt -password').exec()
     .then(user => { // don't ever give out the password or salt
       if(!user) {
         return res.status(401).end();
@@ -101,35 +102,25 @@ controller.me = function (req, res, next) {
  * Creates a new user
  */
 controller.create = function (req, res) {
-  var newUser = new User({
-    name: 'Peter Peterson',
-    email:'som@lia.com',
-    password: 'secret',
-    salt: 'secret'
-  });
+  //var newUser = new User(req.body);
+  let newUser = new User({name: 'Some',email:'som@lia.com',password:'secret',salt:'salt'});
+
   newUser.provider = 'local';
   newUser.role = 'user';
+  
   newUser.save()
-    .then(function(user) {
-      /*
-      var token = jwt.sign({ _id: user._id }, config.secrets.session, {
+    .then( user => {
+      let token = jwt.sign({ _id: user._id }, config.secrets.session, {
         expiresIn: 60 * 60 * 5
       });
+      console.log('inside save');
+      console.log(token);
+
       res.json({ token });
-      //*/
-      res.status(200).send('OK');
     })
     .catch(validationError(res));
 
-    //return res.status(200).send('OK');
-    /*
-    return User.find({}, '-salt -password').exec()
-      .then(users => {
-        res.status(200).send('OK');
-      })
-      .catch(handleError(res));
-      //*/
-  }
+}
 
 /**
  * Authentication callback

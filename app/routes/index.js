@@ -1,7 +1,7 @@
 const express = require('express');
-const router = express.Router();
+const router  = express.Router();
 
-router.use(require('./empresas'));
+//router.use(require('./empresas'));
 
 router.get('/', function(req, res){
     var pageInfo = {
@@ -16,7 +16,7 @@ router.get('/', function(req, res){
         userInfo: userInfo
     });
 });
-
+/*
 router.get('/login', function(req, res){
     res.render('login');
 });
@@ -37,5 +37,5 @@ router.get('/panel', function(req, res){
     });
     //console.log(userName);
 });
-
+//*/
 module.exports = router;
