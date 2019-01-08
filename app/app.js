@@ -1,10 +1,11 @@
 "use strict";
 
 const port = process.env.PORT || 8000;
-const http = require('http');
+//const http = require('http');
 const express = require('express');
 const config = require('./config');
 const app = express();
+const bodyParser = require('body-parser');
 const seedDatabaseIfNeeded = require('./config/seed')
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -12,6 +13,8 @@ mongoose.Promise = require('bluebird');
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 app.use(express.static('app/public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(require('./routes/index'));
 app.use(require('./routes'));
 app.set('view engine', 'ejs');

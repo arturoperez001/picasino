@@ -12,6 +12,7 @@ const express = require('express');
 const app = express.Router();
 
 app.use('/api/users', require(__dirname+'/api/user'));
+app.use('/auth', require(__dirname+'/auth'));
 
 
 // All undefined asset or api routes should return a 404

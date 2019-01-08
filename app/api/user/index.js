@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const controller = require('./user.controller');
-//import * as auth from '../../auth/auth.service';
+const auth = require('../../auth/auth.service');
 
 //var router = new Router();
 
@@ -11,7 +11,7 @@ const controller = require('./user.controller');
 // router.get('/', auth.isAuthenticated(), controller.index);
 
 
-router.get('/', controller.me);
+router.get('/me', controller.me);
 
 // @TODO: crear usuarios por medio de post
 // require: email, nombre, last, password
@@ -19,7 +19,7 @@ router.get('/', controller.me);
 
 router.post('/', controller.create);
 
-router.get('/new', controller.create);
+//router.get('/new', controller.create);
 
 // router.get('/', auth.hasRole('admin'), controller.index);
 /*

@@ -1,7 +1,8 @@
 
 const User = require('./user.model');
-const controller = {};
 const jwt = require('jsonwebtoken');
+const config = require(__dirname+'/../../config');
+const controller = {};
 
 
 function validationError(res, statusCode) {
@@ -100,26 +101,23 @@ controller.me = function (req, res, next) {
 
 /**
  * Creates a new user
+ * required: Name, email, password
  */
 controller.create = function (req, res) {
-  //var newUser = new User(req.body);
-  let newUser = new User({name: 'Some',email:'som@lia.com',password:'secret',salt:'salt'});
+  let newUser = new User(req.body);
+  //let newUser = new User({name: 'Some',email:'som@lia.com',password:'secret',salt:'salt'});
 
   newUser.provider = 'local';
   newUser.role = 'user';
-  
-  newUser.save()
+  newUser.save()    
     .then( user => {
       let token = jwt.sign({ _id: user._id }, config.secrets.session, {
         expiresIn: 60 * 60 * 5
       });
-      console.log('inside save');
-      console.log(token);
 
       res.json({ token });
     })
     .catch(validationError(res));
-
 }
 
 /**
