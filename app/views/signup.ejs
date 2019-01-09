@@ -1,0 +1,88 @@
+<% include partials/head.ejs %>
+  <body class="login">
+    <div>
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form id="form" method="POST" action="" >
+              <h1>Ingreso</h1>
+              <div>
+                <input id="email"name="login" type="text" class="form-control" placeholder="Correo" required="" />
+              </div>
+              <div>
+                <input id="last" name="last" type="text" class="form-control" placeholder="last" required="" />
+              </div>
+              <div>
+                <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" required="" />
+              </div>
+              <div>
+                <input id="password" name="password" type="password" class="form-control" placeholder="Ingresar Clave" required="" />
+              </div>
+              <div>
+                <input id="confirmacion" name="confirmacion" type="password" class="form-control" placeholder="Confirmar Clave" required="" />
+              </div>
+              <div>
+                <button class="btn btn-default submit" name="opc" value="ingresar">
+                    Registrarse
+                </button>
+                <!-- 
+                    <a class="reset_pass" href="#">Lost your password?</a>
+                -->
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">
+                  <a href="#signup" class="to_register"> Crear una cuenta </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+              </div>
+            </form>
+          </section>
+          <% include partials/footer.ejs %>  
+        </div>
+      </div>      
+    </div>
+    
+    <script>
+          document.getElementById("form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            console.log("its runnning")
+            let form = {
+                email: document.getElementById('email').value,
+                name: document.getElementById('nombre').value,
+                last: document.getElementById('last').value,
+                password: document.getElementById('password').value
+            }
+            
+            form.email    = form.email.length > 0 && form.email.indexOf('@') > -1 ? form.email : false;
+            form.last     = form.last.length > 0 ? form.last : false;
+            form.name     = form.name.length > 0 ? form.name : false;
+            form.password = form.password == document.getElementById('confirmacion').value ? form.password : false;
+            
+            if(form.email && form.name && form.last && form.password){
+            // @TODO hacer funcion de post para enviar formulario
+            
+            $.post('/api/users/', form, function( token ,err ) {
+
+                    err = err == "success" ? err : false;         
+
+                    if(err&&token){
+                        var tokenString = JSON.stringify(token);
+                        localStorage.setItem('token',tokenString);
+                        window.location = '/panel';
+                    }else{
+                        alert('Algo malo paso(cambiar este mensaje a un div en la pagina) '.err)                        
+                    }
+                  });
+            //*/
+            }else{
+                alert('Algo malo paso(cambiar este mensaje a un div en la pagina)')
+            }
+            });
+    </script>
+  </body>
+</html>

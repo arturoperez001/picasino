@@ -9,9 +9,8 @@ Estructura:
 - routes.js:    Archivo principal de rutas, cualquier api nuevo debe referirse aqui. De la misma forma la vistas deben                 ser referidas aqui.
 
 TODO List
-- Conexion con la base de datos
-- Verificacion de token
-- Creacion de usuarios
 - Ignorar la carpeta de public
 - Eliminar models, routes, srvices y server. Cambiar la estructura a las carpetas correspondientes.
+- crear vistas par loguear y creacion de usuario.
 - Cazar y eleminar todo el codigo php en las vistas.
+- cargar opciones habiles en la vistas

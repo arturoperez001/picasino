@@ -30,6 +30,7 @@ const setup = function(User/*, config*/) {
     usernameField: 'email',
     passwordField: 'password' // this is the virtual field on the model
   }, function(email, password, done) {
+    console.log(email);
     return localAuthenticate(User, email, password, done);
   }));
 }

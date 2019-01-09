@@ -20,7 +20,7 @@ function handleError(res, statusCode) {
 }
 
 
-/**
+/* 
  * Get list of users
  * restriction: 'admin'
  */
@@ -33,7 +33,7 @@ controller.index = function (req, res) {
     .catch(handleError(res));
 }
 
-/**
+/*
  * Get a single user
  */
 controller.show = function (req, res, next) {
@@ -50,7 +50,7 @@ controller.show = function (req, res, next) {
     .catch(err => next(err));
 }
 
-/**
+/*
  * Deletes a user
  * restriction: 'admin'
  */
@@ -62,7 +62,7 @@ controller.destroy =  function (req, res) {
     .catch(handleError(res));
 }
 
-/**
+/*
  * Change a users password
  */
 controller.changePassword = function (req, res) {
@@ -85,7 +85,7 @@ controller.changePassword = function (req, res) {
     });
 }
 
-/**
+/*
  * Get my info
  */
 controller.me = function (req, res, next) {
@@ -101,7 +101,7 @@ controller.me = function (req, res, next) {
     .catch(err => next(err));
 }
 
-/**
+/*
  * Creates a new user
  * required: Name, email, password
  */
@@ -122,7 +122,7 @@ controller.create = function (req, res) {
     .catch(validationError(res));
 }
 
-/**
+/*
  * Authentication callback
  */
 controller.authCallback = function (req, res) {

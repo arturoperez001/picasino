@@ -11,6 +11,7 @@ import path from 'path';
 const express = require('express');
 const app = express.Router();
 
+//Rutas para las API 
 app.use('/api/users', require(__dirname+'/api/user'));
 app.use('/auth', require(__dirname+'/auth'));
 
@@ -35,7 +36,8 @@ app.route('/:url(api|auth|components|app|bower_components|assets)/*')
     });
 });
 
-app.route('/*').get(function(req, res){
+//Rutas para las vistas
+app.route('/panel').get(function(req, res){
   var pageInfo = {
       pageName: 'Colacionator',
       pageTitle: 'Panel de control'
@@ -48,5 +50,49 @@ app.route('/*').get(function(req, res){
       userInfo: userInfo
   });
 });
+
+app.route('/login').get(function(req, res){
+  var pageInfo = {
+      pageName: 'Colacionator',
+      pageTitle: 'Login'
+  };
+  var userInfo = {
+      userName : 'Asdrubal'
+  };
+  res.render('login',{
+      pageInfo : pageInfo,
+      userInfo: userInfo
+  });
+});
+
+app.route('/signup').get(function(req, res){
+  var pageInfo = {
+      pageName: 'Colacionator',
+      pageTitle: 'Registrar usuario'
+  };
+  var userInfo = {
+      userName : 'Asdrubal'
+  };
+  res.render('signup',{
+      pageInfo : pageInfo,
+      userInfo: userInfo
+  });
+});
+
+app.route('/usuarios').get(function(req, res){
+  var pageInfo = {
+      pageName: 'Colacionator',
+      pageTitle: 'Registrar usuario'
+  };
+  var userInfo = {
+      userName : 'Asdrubal'
+  };
+  res.render('signup',{
+      pageInfo : pageInfo,
+      userInfo: userInfo,
+      users: userList
+  });
+});
+
 //*/
 module.exports = app;
