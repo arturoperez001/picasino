@@ -17,6 +17,7 @@ var validateJwt = expressJwt({
   return compose()
     // Validate jwt
     .use(function(req, res, next) {
+      //console.log(req);
       // allow access_token to be passed through query parameter as well
       if(req.query && req.query.hasOwnProperty('access_token')) {
         req.headers.authorization = `Bearer ${req.query.access_token}`;
@@ -48,11 +49,12 @@ const hasRole = function(roleRequired) {
   if(!roleRequired) {
     throw new Error('Required role needs to be set');
   }
-
   return compose()
     .use(isAuthenticated())
     .use(function meetsRequirements(req, res, next) {
+      //console.log(req.user);
       if(config.userRoles.indexOf(req.user.role) >= config.userRoles.indexOf(roleRequired)) {
+        console.log('Role confirm')
         return next();
       } else {
         return res.status(403).send('Forbidden');

@@ -27,6 +27,7 @@ function handleError(res, statusCode) {
 controller.index = function (req, res) {
   return User.find({}, '-salt -password').exec()
     .then(users => {
+      console.log(users)
       res.status(200).send('OK');
     })
     .catch(handleError(res));
@@ -43,6 +44,7 @@ controller.show = function (req, res, next) {
       if(!user) {
         return res.status(404).end();
       }
+      console.log(user);
       res.json(user.profile);
     })
     .catch(err => next(err));

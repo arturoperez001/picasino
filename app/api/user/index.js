@@ -4,29 +4,36 @@ const controller = require('./user.controller');
 const auth = require('../../auth/auth.service');
 
 //var router = new Router();
+// Ver todos los usuarios en la base de datos 
+// requiere: token
 
-// @Todo : crear el dashboard del usuario o cliente 
+router.get('/', auth.hasRole('admin'), controller.index);
+
+// Ver propiedades del cliente 
 // require: token
 // optional : none
-// router.get('/', auth.isAuthenticated(), controller.index);
 
+router.get('/me', auth.isAuthenticated(), controller.me);
 
-router.get('/me', controller.me);
-
-// @TODO: crear usuarios por medio de post
+// Crear un nuevo usuario 
 // require: email, nombre, last, password
 // optional: none
 
 router.post('/', controller.create);
 
-//router.get('/new', controller.create);
+// 
+// require: email, nombre, last, password
+// optional: none
 
-// router.get('/', auth.hasRole('admin'), controller.index);
-/*
-router.delete('/:id', auth.hasRole('admin'), controller.destroy);
-router.get('/me', auth.isAuthenticated(), controller.me);
-router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.isAuthenticated(), controller.show);
-router.post('/', controller.create);
-/*/
+
+// Elimina un usuario en la base de datos
+// requiere: token
+
+router.delete('/:id', auth.hasRole('admin'), controller.destroy);
+
+// Cambia la contraseña del usuario
+// requiere: token
+router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
+
 module.exports = router;

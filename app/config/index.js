@@ -50,5 +50,5 @@ var all = {
 // ==============================================
 module.exports = _.merge(
   all,
-  //require('./shared'),
+  require('./shared'),
   require(`./${all.env}.js`) || {});
