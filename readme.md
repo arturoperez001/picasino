@@ -26,16 +26,16 @@ Estructura:
 				ser referidas aqui.
 
 API:
- requiere: token
 - api/users get: Ver todos los usuarios en la base de datos 
+ requiere: token
 
+- api/users/me get: Ver propiedades del cliente 
  require: token
  optional : none
-- api/users/me get: Ver propiedades del cliente 
 
--api/users post:('/' :Crear un nuevo usuario 
-// require: email, nombre, last, password
-// optional: none
+-api/users post: Crear un nuevo usuario 
+ require: email, nombre, last, password
+ optional: none
 
 
 - api/users/:id get: ver las propiedades de un usuario
@@ -46,7 +46,7 @@ API:
  requiere: token
 
 
-- api/users/:id/password Cambia la contraseÃ±a del usuario
+- api/users/:id/password Cambia la contraseña del usuario
  requiere: token
 
 rutas:
