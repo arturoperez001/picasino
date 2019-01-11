@@ -46,7 +46,7 @@ API:
  requiere: token
 
 
-- api/users/:id/password Cambia la contraseña del usuario
+- api/users/:id/password Cambia la contrasenna del usuario
  requiere: token
 
 rutas:
