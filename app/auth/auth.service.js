@@ -19,13 +19,18 @@ var validateJwt = expressJwt({
     .use(function(req, res, next) {
       //console.log(req);
       // allow access_token to be passed through query parameter as well
-      if(req.query && req.query.hasOwnProperty('access_token')) {
-        req.headers.authorization = `Bearer ${req.query.access_token}`;
-      }
-     // IE11 forgets to set Authorization header sometimes. Pull from cookie instead.
-      if(req.query && typeof req.headers.authorization === 'undefined') {
-        req.headers.authorization = `Bearer ${req.cookies.token}`;
-      }
+            
+      try {
+            if(req.query && req.query.hasOwnProperty('access_token')) {
+              req.headers.authorization = `Bearer ${req.query.access_token}`;
+            }
+          // IE11 forgets to set Authorization header sometimes. Pull from cookie instead.
+            if(req.query && typeof req.headers.authorization === 'undefined') {
+              req.headers.authorization = `Bearer ${req.cookies.token}`;
+            }
+          }catch (err) {
+            return res.status(401).end();
+         }
       validateJwt(req, res, next);
     })
     // Attach user to request

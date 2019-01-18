@@ -35,8 +35,9 @@ app.route('/:url(api|auth|components|app|bower_components|assets)/*')
       res.send(html);
     });
 });
-
+app.use(require(__dirname+'/routes/index'));
 //Rutas para las vistas
+/*
 app.route('/panel').get(function(req, res){
   var pageInfo = {
       pageName: 'Colacionator',
@@ -87,6 +88,7 @@ app.route('/usuarios').get(function(req, res){
   var userInfo = {
       userName : 'Asdrubal'
   };
+  
   res.render('signup',{
       pageInfo : pageInfo,
       userInfo: userInfo,
